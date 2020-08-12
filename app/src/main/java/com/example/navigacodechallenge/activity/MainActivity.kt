@@ -1,10 +1,11 @@
-package com.example.kotlinfoundation.activity
+package com.example.navigacodechallenge.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.kotlinfoundation.R
-import com.example.kotlinfoundation.application.KotlinFoundationApplication
-import com.example.kotlinfoundation.viewmodel.TypicodeViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.navigacodechallenge.R
+import com.example.navigacodechallenge.adapter.ItemAdapter
+import com.example.navigacodechallenge.viewmodel.ItemViewModel
+import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_main.*
@@ -13,23 +14,23 @@ import javax.inject.Inject
 class MainActivity : DaggerAppCompatActivity() {
 
     @Inject
-    lateinit var typicodeViewModel: TypicodeViewModel
+    lateinit var itemViewModel: ItemViewModel
+
+    @Inject
+    lateinit var picasso: Picasso
 
     private val compositeDisposable : CompositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        item_recyclerview.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onResume() {
         super.onResume()
-        compositeDisposable.add(typicodeViewModel.getTodosList().subscribe {
-            var output : String = ""
-            for (t in it) {
-                output += t.title + "\n"
-            }
-            body_text.text = output
+        compositeDisposable.add(itemViewModel.getItemList().subscribe {
+            item_recyclerview.adapter = ItemAdapter(it, picasso)
         })
     }
 

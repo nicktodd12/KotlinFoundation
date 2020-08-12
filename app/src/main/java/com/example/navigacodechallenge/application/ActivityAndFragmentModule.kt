@@ -1,6 +1,6 @@
-package com.example.kotlinfoundation.application
+package com.example.navigacodechallenge.application
 
-import com.example.kotlinfoundation.activity.MainActivity
+import com.example.navigacodechallenge.activity.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

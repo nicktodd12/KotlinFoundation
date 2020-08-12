@@ -1,6 +1,6 @@
-package com.example.kotlinfoundation.service
+package com.example.navigacodechallenge.service
 
-import com.example.kotlinfoundation.BuildConfig
+import com.example.navigacodechallenge.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,7 +21,7 @@ internal object ServiceFactory {
         val httpClientBuilder = OkHttpClient.Builder().addInterceptor(logging)
         val builder = Retrofit.Builder()
         builder.client(httpClientBuilder.build())
-        builder.baseUrl("https://jsonplaceholder.typicode.com/")
+        builder.baseUrl("http://static.navigamobile.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
         return builder.build().create(service)

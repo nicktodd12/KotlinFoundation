@@ -1,4 +1,4 @@
-package com.example.kotlinfoundation
+package com.example.navigacodechallenge
 
 import org.junit.Test
 

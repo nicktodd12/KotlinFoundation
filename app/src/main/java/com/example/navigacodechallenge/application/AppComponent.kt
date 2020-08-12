@@ -1,4 +1,4 @@
-package com.example.kotlinfoundation.application
+package com.example.navigacodechallenge.application
 
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -13,7 +13,7 @@ import javax.inject.Singleton
         ActivityAndFragmentModule::class
     ]
 )
-interface AppComponent : AndroidInjector<KotlinFoundationApplication> {
+interface AppComponent : AndroidInjector<NavigaCodeChallengeApplication> {
     @Component.Builder
-    abstract class Builder : AndroidInjector.Builder<KotlinFoundationApplication>()
+    abstract class Builder : AndroidInjector.Builder<NavigaCodeChallengeApplication>()
 }

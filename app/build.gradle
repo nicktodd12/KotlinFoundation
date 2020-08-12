@@ -8,8 +8,8 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.example.kotlinfoundation"
-        minSdkVersion 16
+        applicationId "com.example.navigacodechallenge"
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
