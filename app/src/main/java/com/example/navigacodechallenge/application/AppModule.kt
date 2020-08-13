@@ -8,6 +8,9 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
+/**
+ * App wide items used for injection
+ */
 @Module(includes = [ViewModelModule::class])
 class AppModule {
     @Provides

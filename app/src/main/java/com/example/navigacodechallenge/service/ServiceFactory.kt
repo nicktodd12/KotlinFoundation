@@ -7,6 +7,9 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Creates a service of the specified type to be used when injecting the service
+ */
 internal object ServiceFactory {
     @JvmStatic
     fun <T> createService(service: Class<T>): T {

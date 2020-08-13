@@ -5,6 +5,9 @@ import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
+/**
+ * Interface for combining all modules and setting up the application for injection
+ */
 @Singleton
 @Component(
     modules = [

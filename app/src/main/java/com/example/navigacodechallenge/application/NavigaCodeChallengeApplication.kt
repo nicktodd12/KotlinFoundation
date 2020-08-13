@@ -4,6 +4,9 @@ import android.content.Context
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
+/**
+ * Implementation of the Dagger application
+ */
 class NavigaCodeChallengeApplication : DaggerApplication() {
 
     init {

@@ -11,6 +11,9 @@ import com.example.navigacodechallenge.model.Item
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_row.view.*
 
+/**
+ * Adapter which creates the visual representation of the list of items
+ */
 class ItemAdapter(var itemList: List<Item>, val picasso: Picasso) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
@@ -23,6 +26,7 @@ class ItemAdapter(var itemList: List<Item>, val picasso: Picasso) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        //get the current item to bind and set the relevant fields
         val item = itemList[position]
         holder.titleTextView.text = item.title
         holder.bodyTextView.text = item.body
@@ -39,6 +43,9 @@ class ItemAdapter(var itemList: List<Item>, val picasso: Picasso) : RecyclerView
         }
     }
 
+    /**
+     * The viewholder used for binding the view ids to variables for editing
+     */
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val titleTextView: TextView = itemView.item_title

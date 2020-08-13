@@ -3,7 +3,6 @@ package com.example.navigacodechallenge.activity
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.navigacodechallenge.R
 import com.example.navigacodechallenge.adapter.ItemAdapter
 import com.example.navigacodechallenge.viewmodel.ItemViewModel
@@ -35,6 +34,7 @@ class MainActivity : DaggerAppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        //add subscription to disposable and set up adapter with result
         compositeDisposable.add(itemViewModel.getItemList().subscribe {
             item_recyclerview.adapter = ItemAdapter(it, picasso)
         })

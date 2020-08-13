@@ -7,13 +7,16 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
+/**
+ * Module used for viewmodel injection
+ */
 @Module(
     includes = [ServiceModule::class]
 )
 class ViewModelModule {
     @Provides
     @Singleton
-    fun provideTypicodeViewModel(itemService: ItemService) : ItemViewModel {
+    fun provideItemViewModel(itemService: ItemService) : ItemViewModel {
         return ItemViewModelImpl(itemService)
     }
 }
