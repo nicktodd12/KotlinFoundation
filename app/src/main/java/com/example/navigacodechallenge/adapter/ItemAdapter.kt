@@ -1,6 +1,5 @@
 package com.example.navigacodechallenge.adapter
 
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,9 +25,17 @@ class ItemAdapter(var itemList: List<Item>, val picasso: Picasso) : RecyclerView
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemList[position]
         holder.titleTextView.text = item.title
+        holder.bodyTextView.text = item.body
         if(item.image != null) {
             picasso.load(item.image.url).into(holder.imageView)
             holder.imageView.visibility = View.VISIBLE
+        } else {
+            holder.imageView.visibility = View.GONE
+        }
+        if (item.media) {
+            holder.mediaIcon.visibility = View.VISIBLE
+        } else {
+            holder.mediaIcon.visibility = View.GONE
         }
     }
 
@@ -36,8 +43,11 @@ class ItemAdapter(var itemList: List<Item>, val picasso: Picasso) : RecyclerView
 
         val titleTextView: TextView = itemView.item_title
 
+        val bodyTextView: TextView = itemView.item_body
+
         val imageView: ImageView = itemView.item_image
 
+        val mediaIcon: ImageView = itemView.item_media
     }
 
 }

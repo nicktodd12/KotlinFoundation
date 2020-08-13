@@ -1,7 +1,9 @@
 package com.example.navigacodechallenge.activity
 
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.navigacodechallenge.R
 import com.example.navigacodechallenge.adapter.ItemAdapter
 import com.example.navigacodechallenge.viewmodel.ItemViewModel
@@ -24,7 +26,11 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        item_recyclerview.layoutManager = LinearLayoutManager(this)
+        item_recyclerview.apply {
+            layoutManager = LinearLayoutManager(this.context)
+            addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
+        }
+
     }
 
     override fun onResume() {
