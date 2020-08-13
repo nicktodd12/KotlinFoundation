@@ -1,6 +1,9 @@
 package com.example.navigacodechallenge.activity
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.navigacodechallenge.R
@@ -25,6 +28,7 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        spinner.visibility = View.VISIBLE
         item_recyclerview.apply {
             layoutManager = LinearLayoutManager(this.context)
             addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
@@ -35,9 +39,14 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onResume() {
         super.onResume()
         //add subscription to disposable and set up adapter with result
-        compositeDisposable.add(itemViewModel.getItemList().subscribe {
+        compositeDisposable.add(itemViewModel.getItemList().subscribe ({
             item_recyclerview.adapter = ItemAdapter(it, picasso)
-        })
+        }, {
+            Log.e(getString(R.string.error_text), it.message!!)
+            Toast.makeText(this, getString(R.string.error_text), Toast.LENGTH_SHORT).show();
+        }, {
+            spinner.visibility = View.GONE
+        }))
     }
 
     override fun onPause() {
