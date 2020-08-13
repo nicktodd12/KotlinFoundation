@@ -33,7 +33,6 @@ class MainActivity : DaggerAppCompatActivity() {
             layoutManager = LinearLayoutManager(this.context)
             addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
         }
-
     }
 
     override fun onResume() {
