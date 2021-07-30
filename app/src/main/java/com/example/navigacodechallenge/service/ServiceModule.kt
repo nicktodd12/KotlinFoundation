@@ -1,5 +1,6 @@
 package com.example.navigacodechallenge.service
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -11,7 +12,13 @@ import javax.inject.Singleton
 class ServiceModule {
     @Provides
     @Singleton
-    fun provideTypicodeService() : ItemService {
-        return ServiceFactory.createService(ItemService::class.java)
+    fun provideItemService(context: Context) : ItemService {
+        return ServiceFactory.createService(ItemService::class.java, context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFileService(context: Context) : FileService {
+        return ServiceFactory.createService(FileService::class.java, context)
     }
 }

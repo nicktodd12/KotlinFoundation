@@ -1,0 +1,8 @@
+{
+  "files": [{
+    "file-type": "video",
+    "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "destination_path": "sdcard/videos/",
+    "friendly_name": "BigBuckBunny.mp4"
+  }]
+}

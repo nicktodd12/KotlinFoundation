@@ -1,5 +1,6 @@
 package com.example.navigacodechallenge.service
 
+import android.content.Context
 import com.example.navigacodechallenge.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 internal object ServiceFactory {
     @JvmStatic
-    fun <T> createService(service: Class<T>): T {
+    fun <T> createService(service: Class<T>, context: Context): T {
         val logging = HttpLoggingInterceptor()
 
         if (BuildConfig.DEBUG) {
@@ -21,7 +22,7 @@ internal object ServiceFactory {
             logging.level = HttpLoggingInterceptor.Level.NONE
         }
 
-        val httpClientBuilder = OkHttpClient.Builder().addInterceptor(logging)
+        val httpClientBuilder = OkHttpClient.Builder().addInterceptor(logging).addInterceptor(MockRequestInterceptor(context))
         val builder = Retrofit.Builder()
         builder.client(httpClientBuilder.build())
         builder.baseUrl("http://static.navigamobile.com/")
