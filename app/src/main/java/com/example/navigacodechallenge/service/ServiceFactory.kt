@@ -25,7 +25,7 @@ internal object ServiceFactory {
         val httpClientBuilder = OkHttpClient.Builder().addInterceptor(logging).addInterceptor(MockRequestInterceptor(context))
         val builder = Retrofit.Builder()
         builder.client(httpClientBuilder.build())
-        builder.baseUrl("http://static.navigamobile.com/")
+        builder.baseUrl("http://www.test.com")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
         return builder.build().create(service)

@@ -1,8 +1,6 @@
 package com.example.navigacodechallenge.viewmodel.impl
 
 import com.example.navigacodechallenge.BaseRxTest
-import com.example.navigacodechallenge.model.Item
-import com.example.navigacodechallenge.service.ItemService
 import io.reactivex.Observable
 import io.reactivex.observers.TestObserver
 import org.junit.Test

@@ -12,12 +12,6 @@ import javax.inject.Singleton
 class ServiceModule {
     @Provides
     @Singleton
-    fun provideItemService(context: Context) : ItemService {
-        return ServiceFactory.createService(ItemService::class.java, context)
-    }
-
-    @Provides
-    @Singleton
     fun provideFileService(context: Context) : FileService {
         return ServiceFactory.createService(FileService::class.java, context)
     }
