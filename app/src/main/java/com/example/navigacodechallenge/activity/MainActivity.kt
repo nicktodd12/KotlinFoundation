@@ -43,30 +43,14 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //spinner.visibility = View.VISIBLE
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        spinner.visibility = View.VISIBLE
+        /*if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), WRITE_EXTERNAL_STORAGE)
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), REQUEST_PERMISSION)
-        }
-        item_recyclerview.apply {
-            layoutManager = LinearLayoutManager(this.context)
-            addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
-        }
-    }
+        }*/
 
-    override fun onResume() {
-        super.onResume()
-        //add subscription to disposable and set up adapter with result
-        /*compositeDisposable.add(itemViewModel.getItemList().subscribe ({
-            item_recyclerview.adapter = ItemAdapter(it, picasso)
-        }, {
-            Log.e(getString(R.string.error_text), it.message!!)
-            Toast.makeText(this, getString(R.string.error_text), Toast.LENGTH_SHORT).show();
-        }, {
-            spinner.visibility = View.GONE
-        }))*/
         compositeDisposable.add(fileViewModel.getFiles().subscribe({
             val path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
             val file = File(path, it.files[0].friendlyName)
@@ -85,14 +69,15 @@ class MainActivity : DaggerAppCompatActivity() {
                 val dm: DownloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
                 dm.enqueue(request)
             }
-            Log.d("Test", "Here")
         }, {
             Log.e(getString(R.string.error_text), it.message!!)
+        }, {
+            spinner.visibility = View.GONE
         }))
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onDestroy() {
+        super.onDestroy()
         compositeDisposable.clear()
     }
 }
