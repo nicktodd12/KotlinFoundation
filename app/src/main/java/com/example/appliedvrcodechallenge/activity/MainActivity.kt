@@ -42,6 +42,9 @@ class MainActivity : DaggerAppCompatActivity() {
         compositeDisposable.clear()
     }
 
+    /**
+     * Rx function for fetching the list of files and setting up the download manager to store them
+     */
     private fun fetchFileUpdate() {
         compositeDisposable.add(fileViewModel.getFiles().subscribe({
             var newFiles = 0

@@ -3,7 +3,7 @@ package com.example.appliedvrcodechallenge.model
 import com.google.gson.annotations.SerializedName
 
 /**
- * Represents the data contained in a item row
+ * Represents the data contained in a file
  */
 data class File(
     @SerializedName("file-type") val fileType: String,

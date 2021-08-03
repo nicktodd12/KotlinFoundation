@@ -6,6 +6,9 @@ import java.io.IOException
 import java.io.InputStream
 import java.nio.charset.StandardCharsets.UTF_8
 
+/**
+ * Interceptor to be used when setting up retrofit in order to use local json files
+ */
 class MockRequestInterceptor(private val context: Context) : Interceptor {
 
     companion object {
