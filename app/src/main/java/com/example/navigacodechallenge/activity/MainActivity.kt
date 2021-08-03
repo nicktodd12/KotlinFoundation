@@ -4,6 +4,8 @@ import android.app.DownloadManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import com.example.navigacodechallenge.R
 import com.example.navigacodechallenge.viewmodel.FileViewModel
@@ -11,6 +13,7 @@ import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 import java.io.File
 import javax.inject.Inject
+
 
 class MainActivity : DaggerAppCompatActivity() {
 
@@ -22,7 +25,14 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        fetchFileUpdate()
+        val handler = Handler(Looper.getMainLooper())
+        val test: Runnable = object : Runnable {
+            override fun run() {
+                fetchFileUpdate()
+                handler.postDelayed(this, 20000)
+            }
+        }
+        handler.postDelayed(test, 0)
     }
 
     override fun onDestroy() {
@@ -32,16 +42,17 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private fun fetchFileUpdate() {
         compositeDisposable.add(fileViewModel.getFiles().subscribe({
-            val path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+            val path =
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
             it.files.forEach { file ->
                 val filePath = File(path, file.friendlyName)
                 if (!filePath.isFile) {
                     val request = DownloadManager.Request(
                         Uri.parse(file.url)
                     )
-                        .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE) // Visibility of the download Notification
-                        .setTitle(file.friendlyName) // Title of the Download Notification
-                        .setDescription("Downloading") // Description of the Download Notification
+                        .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
+                        .setTitle(file.friendlyName)
+                        .setDescription("Downloading")
                         .setAllowedOverMetered(true)
                         .setDestinationInExternalPublicDir(
                             Environment.DIRECTORY_DOWNLOADS,
@@ -49,6 +60,7 @@ class MainActivity : DaggerAppCompatActivity() {
                         )
                     val dm: DownloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
                     dm.enqueue(request)
+
                 }
             }
         }, {
