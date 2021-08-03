@@ -11,12 +11,20 @@ class MockRequestInterceptor(private val context: Context) : Interceptor {
     companion object {
         private val JSON_MEDIA_TYPE = MediaType.parse("application/json")
         private const val MOCK = "mock"
+        private var SECOND_PAYLOAD = false
     }
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
 
         val header = request.header(MOCK)
+
+        val asset = if (!SECOND_PAYLOAD) {
+            SECOND_PAYLOAD = true
+            "payload1"
+        } else {
+            "payload2"
+        }
 
         if (header != null) {
             return Response.Builder()
@@ -27,7 +35,7 @@ class MockRequestInterceptor(private val context: Context) : Interceptor {
                 .body(
                     ResponseBody.create(
                         JSON_MEDIA_TYPE,
-                        loadJSONFromAsset("payload2")
+                        loadJSONFromAsset(asset)
                     )
                 )
                 .build()

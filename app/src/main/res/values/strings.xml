@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Naviga Code Challenge</string>
-    <string name="item_image_description">Item Image</string>
+    <string name="app_name">AppliedVR Code Challenge</string>
     <string name="error_text">Error retrieving item list</string>
 </resources>
