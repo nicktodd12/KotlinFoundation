@@ -1,8 +1,8 @@
-package com.example.navigacodechallenge.viewmodel.impl
+package com.example.appliedvrcodechallenge.viewmodel.impl
 
-import com.example.navigacodechallenge.service.FileService
-import com.example.navigacodechallenge.service.ServiceModule
-import com.example.navigacodechallenge.viewmodel.FileViewModel
+import com.example.appliedvrcodechallenge.service.FileService
+import com.example.appliedvrcodechallenge.service.ServiceModule
+import com.example.appliedvrcodechallenge.viewmodel.FileViewModel
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

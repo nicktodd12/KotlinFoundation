@@ -1,4 +1,4 @@
-package com.example.navigacodechallenge.activity
+package com.example.appliedvrcodechallenge.activity
 
 import android.app.DownloadManager
 import android.net.Uri
@@ -8,8 +8,8 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
-import com.example.navigacodechallenge.R
-import com.example.navigacodechallenge.viewmodel.FileViewModel
+import com.example.appliedvrcodechallenge.R
+import com.example.appliedvrcodechallenge.viewmodel.FileViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 import java.io.File

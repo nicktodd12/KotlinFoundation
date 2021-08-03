@@ -1,4 +1,4 @@
-package com.example.navigacodechallenge.model
+package com.example.appliedvrcodechallenge.model
 
 import com.google.gson.annotations.SerializedName
 

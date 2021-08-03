@@ -1,4 +1,4 @@
-package com.example.navigacodechallenge.application
+package com.example.appliedvrcodechallenge.application
 
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -16,7 +16,7 @@ import javax.inject.Singleton
         ActivityAndFragmentModule::class
     ]
 )
-interface AppComponent : AndroidInjector<NavigaCodeChallengeApplication> {
+interface AppComponent : AndroidInjector<AppliedVRCodeChallengeApplication> {
     @Component.Builder
-    abstract class Builder : AndroidInjector.Builder<NavigaCodeChallengeApplication>()
+    abstract class Builder : AndroidInjector.Builder<AppliedVRCodeChallengeApplication>()
 }

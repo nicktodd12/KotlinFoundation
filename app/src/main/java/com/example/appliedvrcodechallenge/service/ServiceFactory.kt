@@ -1,7 +1,7 @@
-package com.example.navigacodechallenge.service
+package com.example.appliedvrcodechallenge.service
 
 import android.content.Context
-import com.example.navigacodechallenge.BuildConfig
+import com.example.appliedvrcodechallenge.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

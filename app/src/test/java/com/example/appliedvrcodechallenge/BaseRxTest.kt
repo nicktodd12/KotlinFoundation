@@ -1,4 +1,4 @@
-package com.example.navigacodechallenge
+package com.example.appliedvrcodechallenge
 
 import org.junit.Rule
 

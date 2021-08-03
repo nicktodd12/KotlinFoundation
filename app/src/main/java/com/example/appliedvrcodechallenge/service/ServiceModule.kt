@@ -1,4 +1,4 @@
-package com.example.navigacodechallenge.service
+package com.example.appliedvrcodechallenge.service
 
 import android.content.Context
 import dagger.Module

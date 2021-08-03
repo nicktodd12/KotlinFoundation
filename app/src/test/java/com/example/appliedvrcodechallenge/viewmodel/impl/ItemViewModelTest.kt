@@ -1,9 +1,8 @@
-package com.example.navigacodechallenge.viewmodel.impl
+package com.example.appliedvrcodechallenge.viewmodel.impl
 
-import com.example.navigacodechallenge.BaseRxTest
-import com.example.navigacodechallenge.model.File
-import com.example.navigacodechallenge.model.Files
-import com.example.navigacodechallenge.service.FileService
+import com.example.appliedvrcodechallenge.BaseRxTest
+import com.example.appliedvrcodechallenge.model.Files
+import com.example.appliedvrcodechallenge.service.FileService
 import io.reactivex.Observable
 import io.reactivex.observers.TestObserver
 import org.junit.Test

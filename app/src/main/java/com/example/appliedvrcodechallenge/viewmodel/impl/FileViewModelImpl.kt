@@ -1,11 +1,11 @@
-package com.example.navigacodechallenge.viewmodel.impl
+package com.example.appliedvrcodechallenge.viewmodel.impl
 
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
-import com.example.navigacodechallenge.model.Files
-import com.example.navigacodechallenge.service.FileService
-import com.example.navigacodechallenge.viewmodel.FileViewModel
+import com.example.appliedvrcodechallenge.model.Files
+import com.example.appliedvrcodechallenge.service.FileService
+import com.example.appliedvrcodechallenge.viewmodel.FileViewModel
 /**
  * Implementation of the File viewmodel
  */

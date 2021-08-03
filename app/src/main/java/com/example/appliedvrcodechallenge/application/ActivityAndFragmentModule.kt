@@ -1,6 +1,6 @@
-package com.example.navigacodechallenge.application
+package com.example.appliedvrcodechallenge.application
 
-import com.example.navigacodechallenge.activity.MainActivity
+import com.example.appliedvrcodechallenge.activity.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

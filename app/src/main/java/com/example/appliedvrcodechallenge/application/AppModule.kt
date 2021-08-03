@@ -1,7 +1,7 @@
-package com.example.navigacodechallenge.application
+package com.example.appliedvrcodechallenge.application
 
 import android.content.Context
-import com.example.navigacodechallenge.viewmodel.impl.ViewModelModule
+import com.example.appliedvrcodechallenge.viewmodel.impl.ViewModelModule
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -14,6 +14,6 @@ class AppModule {
     @Provides
     @Singleton
     fun context() : Context {
-        return NavigaCodeChallengeApplication.applicationContext()
+        return AppliedVRCodeChallengeApplication.applicationContext()
     }
 }
