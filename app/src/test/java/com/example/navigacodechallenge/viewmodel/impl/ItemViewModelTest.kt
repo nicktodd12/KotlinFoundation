@@ -1,6 +1,9 @@
 package com.example.navigacodechallenge.viewmodel.impl
 
 import com.example.navigacodechallenge.BaseRxTest
+import com.example.navigacodechallenge.model.File
+import com.example.navigacodechallenge.model.Files
+import com.example.navigacodechallenge.service.FileService
 import io.reactivex.Observable
 import io.reactivex.observers.TestObserver
 import org.junit.Test
@@ -12,37 +15,37 @@ import org.mockito.runners.MockitoJUnitRunner
 import java.net.SocketTimeoutException
 
 /**
- * Tests functionality of the ItemViewModel
+ * Tests functionality of the FileViewModel
  */
 @RunWith(MockitoJUnitRunner::class)
-class ItemViewModelTest : BaseRxTest() {
-    lateinit var itemViewModel: ItemViewModelImpl
-    lateinit var itemService: ItemService
+class FileViewModelTest : BaseRxTest() {
+    lateinit var fileViewModel: FileViewModelImpl
+    lateinit var fileService: FileService
 
     @Before
     fun setup() {
-        itemService = Mockito.mock(ItemService::class.java)
-        itemViewModel = ItemViewModelImpl(itemService)
+        fileService = Mockito.mock(FileService::class.java)
+        fileViewModel = FileViewModelImpl(fileService)
     }
 
     @Test
     fun testGetItems() {
-        val itemListResponse = ArrayList<Item>()
-        Mockito.`when`(itemService.getItemList()).thenReturn(Observable.just(itemListResponse))
-        val testObserver = TestObserver<List<Item>>()
-        itemViewModel.getItemList().subscribe(testObserver)
+        val fileListResponse = Files(arrayListOf())
+        Mockito.`when`(fileService.getFiles()).thenReturn(Observable.just(fileListResponse))
+        val testObserver = TestObserver<Files>()
+        fileViewModel.getFiles().subscribe(testObserver)
 
         testObserver.awaitTerminalEvent()
-        testObserver.assertValue(itemListResponse)
+        testObserver.assertValue(fileListResponse)
     }
 
     @Test
     fun testGetItemsFailure() {
-        Mockito.`when`(itemService.getItemList())
+        Mockito.`when`(fileService.getFiles())
             .thenReturn(Observable.error(SocketTimeoutException()))
 
-        val testObserver = TestObserver<List<Item>>()
-        itemViewModel.getItemList().subscribe(testObserver)
+        val testObserver = TestObserver<Files>()
+        fileViewModel.getFiles().subscribe(testObserver)
 
         testObserver.awaitTerminalEvent()
         testObserver.assertError(SocketTimeoutException::class.java)

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AppliedVR Code Challenge</string>
-    <string name="error_text">Error retrieving item list</string>
+    <string name="error_text">Error retrieving file list</string>
+    <string name="no_new_files">No new files found</string>
+    <string name="one_new_file">1 new file found</string>
+    <string name="multiple_new_files">%d new files found</string>
 </resources>

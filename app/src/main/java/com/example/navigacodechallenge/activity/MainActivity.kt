@@ -28,13 +28,13 @@ class MainActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val handler = Handler(Looper.getMainLooper())
-        val test: Runnable = object : Runnable {
+        val mRunnable: Runnable = object : Runnable {
             override fun run() {
                 fetchFileUpdate()
                 handler.postDelayed(this, TimeUnit.MINUTES.toMillis(1))
             }
         }
-        handler.postDelayed(test, 0)
+        handler.postDelayed(mRunnable, 0)
     }
 
     override fun onDestroy() {
@@ -66,12 +66,16 @@ class MainActivity : DaggerAppCompatActivity() {
                     dm.enqueue(request)
                 }
             }
-            if (newFiles == 0) {
-                Toast.makeText(this, "No new files found", Toast.LENGTH_SHORT).show()
-            } else if (newFiles == 1) {
-                Toast.makeText(this, "1 new file found", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "$newFiles new files found", Toast.LENGTH_SHORT).show()
+            when (newFiles) {
+                0 -> {
+                    Toast.makeText(this, getText(R.string.no_new_files), Toast.LENGTH_SHORT).show()
+                }
+                1 -> {
+                    Toast.makeText(this, getText(R.string.one_new_file), Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    Toast.makeText(this, getString(R.string.multiple_new_files, newFiles), Toast.LENGTH_SHORT).show()
+                }
             }
         }, {
             Log.e(getString(R.string.error_text), it.message!!)

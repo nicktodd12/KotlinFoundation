@@ -44,7 +44,7 @@ class MockRequestInterceptor(private val context: Context) : Interceptor {
         return chain.proceed(request.newBuilder().removeHeader(MOCK).build())
     }
 
-    fun loadJSONFromAsset(fileName: String): String {
+    private fun loadJSONFromAsset(fileName: String): String {
         var json = " "
         json = try {
             val `is`: InputStream = context.assets.open(fileName)

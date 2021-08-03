@@ -7,11 +7,11 @@ import com.example.navigacodechallenge.model.Files
 import com.example.navigacodechallenge.service.FileService
 import com.example.navigacodechallenge.viewmodel.FileViewModel
 /**
- * Implementation of the Item viewmodel
+ * Implementation of the File viewmodel
  */
 class FileViewModelImpl @Inject constructor(var fileService: FileService) : FileViewModel {
     override fun getFiles(): Observable<Files> {
-        //return the item list from the service layer and return on the main thread
+        //return the file list from the service layer and return on the main thread
         return fileService.getFiles().compose{ it.observeOn(AndroidSchedulers.mainThread()) }
     }
 }
